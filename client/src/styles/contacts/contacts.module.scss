@@ -8,16 +8,88 @@
 .header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 8px 20px;
     font-size: 24px;
-    border-bottom: 1px solid #f2f2f2;
-    padding: 5px;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 2.25px 2.6px;
+    background: rgb(0, 29, 139);
+    background: linear-gradient(
+        to right bottom,
+        hsl(236, 50%, 50%),
+        hsl(195, 50%, 50%)
+    );
 }
 
 .footer {
-    height: 50px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .main {
     flex: 1;
+    padding: 15px;
+}
+
+.button {
+    svg {
+        margin-left: 15px;
+    }
+    align-items: center;
+    appearance: none;
+    background-image: radial-gradient(
+        100% 100% at 100% 0,
+        #5adaff 0,
+        #5468ff 100%
+    );
+    border: 0;
+    border-radius: 6px;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+        rgba(45, 35, 66, 0.3) 0 7px 13px -3px,
+        rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono", monospace;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow 0.15s, transform 0.15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow, transform;
+    font-size: 18px;
+
+    &:focus {
+        box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+            rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    }
+
+    &:hover {
+        box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+            rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        box-shadow: #3c4fe0 0 3px 7px inset;
+        transform: translateY(2px);
+    }
+
+    &.logoutButton {
+        height: 40px;
+    }
 }
