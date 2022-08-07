@@ -3,6 +3,7 @@ import { UserActionTypesEnum } from "./userTypes";
 
 class UserActions {
     static SET = UserActionTypesEnum.SET;
+    static UNSET = UserActionTypesEnum.UNSET;
 
     static set = (user: User) => {
         return {
@@ -10,6 +11,12 @@ class UserActions {
             payload: {
                 user,
             },
+        };
+    };
+
+    static unset = () => {
+        return {
+            type: this.UNSET,
         };
     };
 }
