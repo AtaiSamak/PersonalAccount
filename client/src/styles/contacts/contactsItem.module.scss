@@ -54,4 +54,15 @@
             color: rgba(255, 0, 0, 0.5);
         }
     }
+
+    &:hover {
+        cursor: pointer;
+        background-color: #e6e6e6;
+        svg {
+            color: rgba(0, 0, 0, 1);
+        }
+    }
+    &.trash:hover svg {
+        color: rgba(255, 0, 0, 1);
+    }
 }

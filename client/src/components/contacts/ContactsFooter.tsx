@@ -1,21 +1,14 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import contactsStyles from "../../styles/contacts/contacts.module.scss";
 import styles from "../../styles/contacts/contactsFooter.module.scss";
 import Modal from "../common/Modal";
 import ContactsAdd from "./ContactsAdd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import useModal from "../../hooks/useModal";
 
 const ContactsFooter: FC = () => {
-    const [modal, setModal] = useState(false);
-
-    const openModal = () => {
-        setModal(true);
-    };
-
-    const closeModal = () => {
-        setModal(false);
-    };
+    const { modal, openModal, closeModal } = useModal();
 
     return (
         <>

@@ -4,6 +4,8 @@ import styles from "../../styles/contacts/contactsItem.module.scss";
 import { faPen, faTrash, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import ContactsActions from "../../store/contacts/contactsActions";
+import useModal from "../../hooks/useModal";
+import Modal from "../common/Modal";
 
 type ContactsItemProps = {
     firstname: string;
@@ -18,6 +20,7 @@ const ContactsItem: FC<ContactsItemProps> = ({
     email,
     id,
 }) => {
+    const { modal, openModal, closeModal } = useModal();
     const dispatch = useDispatch();
 
     const handleRemove = () => {
@@ -25,30 +28,33 @@ const ContactsItem: FC<ContactsItemProps> = ({
     };
 
     return (
-        <div className={styles.container}>
-            <div className={styles.details}>
-                <div className={styles.icon}>
-                    <FontAwesomeIcon icon={faUser} />
-                </div>
-                <div className={styles.info}>
-                    <div className={styles.name}>
-                        {firstname} {lastname}
+        <>
+            <div className={styles.container}>
+                <div className={styles.details}>
+                    <div className={styles.icon}>
+                        <FontAwesomeIcon icon={faUser} />
                     </div>
-                    <div>{email}</div>
+                    <div className={styles.info}>
+                        <div className={styles.name}>
+                            {firstname} {lastname}
+                        </div>
+                        <div>{email}</div>
+                    </div>
+                </div>
+                <div>
+                    <button className={styles.button} onClick={openModal}>
+                        <FontAwesomeIcon icon={faPen} />
+                    </button>
+                    <button
+                        className={`${styles.button} ${styles.trash}`}
+                        onClick={handleRemove}
+                    >
+                        <FontAwesomeIcon icon={faTrash} />
+                    </button>
                 </div>
             </div>
-            <div>
-                <button className={styles.button}>
-                    <FontAwesomeIcon icon={faPen} />
-                </button>
-                <button
-                    className={`${styles.button} ${styles.trash}`}
-                    onClick={handleRemove}
-                >
-                    <FontAwesomeIcon icon={faTrash} />
-                </button>
-            </div>
-        </div>
+            {modal ? <Modal closeHandle={closeModal}></Modal> : null}
+        </>
     );
 };
 
