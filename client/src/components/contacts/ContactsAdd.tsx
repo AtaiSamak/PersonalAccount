@@ -1,6 +1,8 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, FC, FormEvent, useState } from "react";
 import Input from "../ui/Input";
 import modalStyles from "../../styles/common/modal.module.scss";
+import { useDispatch } from "react-redux";
+import ContactsActions from "../../store/contacts/contactsActions";
 
 enum InputStateEnum {
     FIRSTNAME,
@@ -8,10 +10,15 @@ enum InputStateEnum {
     EMAIL,
 }
 
-const ContactsAdd = () => {
+type ContactsAddProps = {
+    closeModal: () => void;
+};
+
+const ContactsAdd: FC<ContactsAddProps> = ({ closeModal }) => {
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
     const [email, setEmail] = useState("");
+    const dispatch = useDispatch();
 
     const handleChange =
         (stateName: InputStateEnum) =>
@@ -29,8 +36,14 @@ const ContactsAdd = () => {
             }
         };
 
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        dispatch(ContactsActions.add({ firstname, lastname, email }));
+        closeModal();
+    };
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <Input
                 name="firstname"
                 placeholder="First name"

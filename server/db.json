@@ -3,6 +3,20 @@
     {
       "email": "martinEden@gmail.com",
       "password": "$2a$10$lwLV2nLZsGuvUne9jal9gudlLRc736SRM2uol.q5cOW138n57rNs.",
+      "contacts": [
+        {
+          "firstname": "Jack",
+          "lastname": "Sparrow",
+          "email": "jacksparrow@gmail.com",
+          "id": "021923668104056437"
+        },
+        {
+          "firstname": "Dick",
+          "lastname": "Diver",
+          "email": "dickdiver@gmail.com",
+          "id": "7147576495039367"
+        }
+      ],
       "id": 1
     }
   ]

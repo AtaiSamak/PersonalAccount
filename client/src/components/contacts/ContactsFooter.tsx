@@ -27,7 +27,7 @@ const ContactsFooter: FC = () => {
             </footer>
             {modal ? (
                 <Modal closeHandle={closeModal}>
-                    <ContactsAdd />
+                    <ContactsAdd closeModal={closeModal} />
                 </Modal>
             ) : null}
         </>

@@ -1,8 +1,8 @@
 import { User } from "../../types/user";
 
 export enum UserActionTypesEnum {
-    SET,
-    UNSET,
+    SET = "user/set",
+    UNSET = "user/unset",
 }
 
 export type UserActionObject = {

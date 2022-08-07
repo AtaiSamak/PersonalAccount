@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootStore } from "../store/rootTypes";
 import AuthAPI from "../api/auth";
 import UserActions from "../store/user/userActions";
+import ContactsActions from "../store/contacts/contactsActions";
 
 const App: FC = () => {
     const user = useSelector((store: RootStore) => store.user);
@@ -14,9 +15,14 @@ const App: FC = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        AuthAPI.auth().then(({ email, id }) => {
-            dispatch(UserActions.set({ email, id }));
-        });
+        AuthAPI.auth()
+            .then(({ email, id, contacts }) => {
+                dispatch(UserActions.set({ email, id }));
+                dispatch(ContactsActions.set(contacts));
+            })
+            .catch(() => {
+                dispatch(UserActions.unset());
+            });
     }, []);
 
     useEffect(() => {
