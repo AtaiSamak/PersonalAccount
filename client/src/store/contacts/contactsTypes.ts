@@ -4,6 +4,7 @@ export enum ContactsActionTypesEnum {
     ADD = "contacts/add",
     SET = "contacts/set",
     REMOVE = "contacts/remove",
+    EDIT = "contacts/edit",
 }
 
 export type ContactsActionObject = {
@@ -12,5 +13,7 @@ export type ContactsActionObject = {
         removeID: string;
         contacts: Contact[];
         contact: Contact;
+        editedUserInfo: Contact;
+        editedUserID: string;
     };
 };

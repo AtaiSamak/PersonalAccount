@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, FormEvent, useState } from "react";
+import React, { FC, useState, ChangeEvent, FormEvent } from "react";
 import Input from "../ui/Input";
 import modalStyles from "../../styles/common/modal.module.scss";
 import { useDispatch } from "react-redux";
@@ -10,15 +10,36 @@ enum InputStateEnum {
     EMAIL,
 }
 
-type ContactsAddProps = {
+type ContactsEditProps = {
+    firstname: string;
+    lastname: string;
+    email: string;
+    contactID: string;
     closeModal: () => void;
 };
 
-const ContactsAdd: FC<ContactsAddProps> = ({ closeModal }) => {
-    const [firstname, setFirstname] = useState("");
-    const [lastname, setLastname] = useState("");
-    const [email, setEmail] = useState("");
+const ContactsEdit: FC<ContactsEditProps> = ({
+    closeModal,
+    contactID,
+    ...props
+}) => {
+    const [firstname, setFirstname] = useState(props.firstname);
+    const [lastname, setLastname] = useState(props.lastname);
+    const [email, setEmail] = useState(props.email);
     const dispatch = useDispatch();
+
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        closeModal();
+        dispatch(
+            ContactsActions.edit(contactID, {
+                firstname,
+                lastname,
+                email,
+                id: contactID,
+            })
+        );
+    };
 
     const handleChange =
         (stateName: InputStateEnum) =>
@@ -35,12 +56,6 @@ const ContactsAdd: FC<ContactsAddProps> = ({ closeModal }) => {
                     break;
             }
         };
-
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        dispatch(ContactsActions.add({ firstname, lastname, email }));
-        closeModal();
-    };
 
     return (
         <form onSubmit={handleSubmit}>
@@ -62,9 +77,9 @@ const ContactsAdd: FC<ContactsAddProps> = ({ closeModal }) => {
                 value={email}
                 onChange={handleChange(InputStateEnum.EMAIL)}
             />
-            <button className={modalStyles.modalButton}>Add</button>
+            <button className={modalStyles.modalButton}>Save</button>
         </form>
     );
 };
 
-export default ContactsAdd;
+export default ContactsEdit;

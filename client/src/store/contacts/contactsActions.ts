@@ -5,6 +5,7 @@ class ContactsActions {
     static ADD = ContactsActionTypesEnum.ADD;
     static SET = ContactsActionTypesEnum.SET;
     static REMOVE = ContactsActionTypesEnum.REMOVE;
+    static EDIT = ContactsActionTypesEnum.EDIT;
 
     static add(contactData: {
         firstname: string;
@@ -36,6 +37,16 @@ class ContactsActions {
             type: this.REMOVE,
             payload: {
                 removeID: id,
+            },
+        };
+    }
+
+    static edit(id: string, editedUserInfo: Contact) {
+        return {
+            type: this.EDIT,
+            payload: {
+                editedUserInfo,
+                editedUserID: id,
             },
         };
     }

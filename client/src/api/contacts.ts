@@ -7,12 +7,18 @@ class ContactsAPI {
     static async update(contacts: Contact[]) {
         const userID = rootStore.getState().user?.id;
         if (!userID) throw new Error("Not logged");
-        return APIHelpers.fetchUpdate(ContactsURL.ROOT + userID, {
-            contacts,
+        return await fetch(ContactsURL.ROOT + userID, {
+            method: "PATCH",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + localStorage.getItem("accessToken"),
+            },
+            body: JSON.stringify({ contacts }),
         })
-            .then((response) => {
-                if (!response.ok) throw new Error(response.statusText);
-                return response.json();
+            .then(async (response) => {
+                if (response && !response.ok) throw Error(response.statusText);
+                return await response.json();
             })
             .catch((error) => {
                 throw Error(error);

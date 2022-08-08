@@ -15,6 +15,11 @@ const contactsReducer = (
             return action.payload.contacts;
         case ContactsActions.REMOVE:
             return state.filter(({ id }) => id !== action.payload.removeID);
+        case ContactsActions.EDIT:
+            return state.map((user) => {
+                if (user.id !== action.payload.editedUserID) return user;
+                return action.payload.editedUserInfo;
+            });
         default:
             return state;
     }

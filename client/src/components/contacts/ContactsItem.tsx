@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import ContactsActions from "../../store/contacts/contactsActions";
 import useModal from "../../hooks/useModal";
 import Modal from "../common/Modal";
+import ContactsEdit from "./ContactsEdit";
 
 type ContactsItemProps = {
     firstname: string;
@@ -53,7 +54,17 @@ const ContactsItem: FC<ContactsItemProps> = ({
                     </button>
                 </div>
             </div>
-            {modal ? <Modal closeHandle={closeModal}></Modal> : null}
+            {modal ? (
+                <Modal closeHandle={closeModal}>
+                    <ContactsEdit
+                        firstname={firstname}
+                        lastname={lastname}
+                        email={email}
+                        contactID={id}
+                        closeModal={closeModal}
+                    />
+                </Modal>
+            ) : null}
         </>
     );
 };
