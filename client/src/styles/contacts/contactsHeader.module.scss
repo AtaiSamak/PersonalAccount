@@ -3,9 +3,6 @@
     align-items: center;
     justify-content: space-between;
     padding: 8px 20px;
-    font-size: 24px;
-    color: #fff;
-    text-transform: uppercase;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 2.25px 2.6px;
     background: rgb(0, 29, 139);
     background: linear-gradient(
@@ -13,4 +10,19 @@
         hsl(236, 50%, 50%),
         hsl(195, 50%, 50%)
     );
+
+    h1 {
+        font-size: 24px;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+}
+
+.searchInput {
+    font-size: 18px;
+    font-weight: 400;
+    font-family: "Ubuntu", sans-serif;
+    padding: 4px 8px;
+    border-radius: 3px;
 }
