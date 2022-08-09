@@ -5,6 +5,7 @@ import AuthInput from "./AuthInput";
 import AuthAPI from "../../api/auth";
 import { useDispatch } from "react-redux";
 import UserActions from "../../store/user/userActions";
+import ContactsActions from "../../store/contacts/contactsActions";
 
 enum InputStateEnum {
     PHONE,
@@ -18,8 +19,9 @@ const Auth: FC = () => {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        AuthAPI.login({ email, password }).then((response) => {
-            dispatch(UserActions.set(response));
+        AuthAPI.login({ email, password }).then(({ email, id, contacts }) => {
+            dispatch(ContactsActions.set(contacts));
+            dispatch(UserActions.set({ email, id }));
         });
     };
 

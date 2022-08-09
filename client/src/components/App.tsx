@@ -17,8 +17,8 @@ const App: FC = () => {
     useEffect(() => {
         AuthAPI.auth()
             .then(({ email, id, contacts }) => {
-                dispatch(UserActions.set({ email, id }));
                 dispatch(ContactsActions.set(contacts));
+                dispatch(UserActions.set({ email, id }));
             })
             .catch(() => {
                 dispatch(UserActions.unset());
