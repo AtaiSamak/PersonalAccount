@@ -24,6 +24,68 @@
         }
       ],
       "id": 1
+    },
+    {
+      "email": "jacksparrow@gmail.com",
+      "password": "$2a$10$S.XiFmCo4qemfEYDKEnN/.mP3LjtzYVdtIYpR4uT6LDNsUvSYaIG2",
+      "contacts": [],
+      "id": 2
+    },
+    {
+      "email": "dickdiver@gmail.com",
+      "password": "$2a$10$Yv986Q13eTy4/uih0Jis8OMm9DgIdVANJ9kXPu37h7YurLE/vHUzO",
+      "contacts": [
+        {
+          "firstname": "Nicole",
+          "lastname": "Diver",
+          "email": "nicolediver@gmail.com",
+          "id": "7436626523975602"
+        },
+        {
+          "firstname": "Rosemary",
+          "lastname": "Hoyt",
+          "email": "actress_rosemary@gmail.com",
+          "id": "7718488972991946"
+        },
+        {
+          "firstname": "Tommy",
+          "lastname": "Barban",
+          "email": "warrior@gmail.com",
+          "id": "05647529622202252"
+        },
+        {
+          "firstname": "Collis",
+          "lastname": "Clay",
+          "email": "ccollis@gmail.com",
+          "id": "9775092833963299"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "email": "andreibolkonsky@gmail.com",
+      "password": "$2a$10$2qdQyCx6BSI8N9xS6x9JsOZs.5w6oLEBeJQ4smpZSj1bFl1zH9BkO",
+      "contacts": [
+        {
+          "firstname": "Pierre",
+          "lastname": "Bezukhov",
+          "email": "pierre_and_bear@gmail.com",
+          "id": "1290668297198938"
+        },
+        {
+          "firstname": "Lisa",
+          "lastname": "Meinen",
+          "email": "meinen_l@gmail.com",
+          "id": "00634984898742097"
+        },
+        {
+          "firstname": "Nikolai",
+          "lastname": "Bolkonsky",
+          "email": "bolkonsky@gmail.com",
+          "id": "8451030221514875"
+        }
+      ],
+      "id": 4
     }
   ]
 }
