@@ -6,11 +6,22 @@ type InputProps = {
     placeholder: string;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
     value: string;
+    error?: boolean;
 };
 
-const Input: FC<InputProps> = ({ value, onChange, name, placeholder }) => {
+const Input: FC<InputProps> = ({
+    value,
+    onChange,
+    name,
+    placeholder,
+    error,
+}) => {
+    const container = error
+        ? `${styles.container} ${styles.error}`
+        : styles.container;
+
     return (
-        <div className={styles.container}>
+        <div className={container}>
             <input
                 type="input"
                 placeholder={placeholder}

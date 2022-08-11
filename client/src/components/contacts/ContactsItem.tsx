@@ -7,6 +7,7 @@ import ContactsActions from "../../store/contacts/contactsActions";
 import useModal from "../../hooks/useModal";
 import Modal from "../common/Modal";
 import ContactsEdit from "./ContactsEdit";
+import { ContactWithoutID } from "../../types/contact";
 
 type ContactsItemProps = {
     firstname: string;
@@ -26,6 +27,17 @@ const ContactsItem: FC<ContactsItemProps> = ({
 
     const handleRemove = () => {
         dispatch(ContactsActions.remove(id));
+    };
+
+    const editContact = ({ firstname, lastname, email }: ContactWithoutID) => {
+        dispatch(
+            ContactsActions.edit(id, {
+                firstname,
+                lastname,
+                email,
+                id,
+            })
+        );
     };
 
     return (
@@ -55,13 +67,13 @@ const ContactsItem: FC<ContactsItemProps> = ({
                 </div>
             </div>
             {modal ? (
-                <Modal closeHandle={closeModal}>
+                <Modal closeHandle={closeModal} title="Edit contact">
                     <ContactsEdit
                         firstname={firstname}
                         lastname={lastname}
                         email={email}
-                        contactID={id}
                         closeModal={closeModal}
+                        save={editContact}
                     />
                 </Modal>
             ) : null}

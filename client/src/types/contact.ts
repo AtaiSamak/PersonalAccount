@@ -4,3 +4,9 @@ export type Contact = {
     email: string;
     id: string;
 };
+
+export type ContactWithoutID = {
+    firstname: string;
+    lastname: string;
+    email: string;
+};

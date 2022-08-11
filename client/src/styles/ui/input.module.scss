@@ -7,6 +7,22 @@ $gray: #9b9b9b;
     margin: 10px auto 20px;
 }
 
+.container.error {
+    .input {
+        border-bottom: 2px solid rgba(255, 0, 0, 0.8);
+    }
+
+    .input:focus {
+        ~ .label {
+            color: rgba(255, 0, 0, 0.8);
+        }
+    }
+
+    .label {
+        color: rgba(255, 0, 0, 0.8);
+    }
+}
+
 .input {
     font-family: inherit;
     width: 100%;
