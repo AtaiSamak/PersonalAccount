@@ -51,7 +51,7 @@ const ContactsItem: FC<ContactsItemProps> = ({
                         <div className={styles.name}>
                             {firstname} {lastname}
                         </div>
-                        <div>{email}</div>
+                        <div className={styles.email}>{email}</div>
                     </div>
                 </div>
                 <div>

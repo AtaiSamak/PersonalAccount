@@ -17,24 +17,61 @@
         height: 100%;
         color: #4169e1;
     }
+
+    @media screen and (max-width: 480px) {
+        display: none;
+    }
 }
 
 .details {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 }
 
 .info {
     margin-left: 20px;
+    @media screen and (max-width: 480px) {
+        margin-left: 0;
+    }
+}
+
+.name,
+.email {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    @media screen and (max-width: 1280px) {
+        width: 500px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        width: 650px;
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 220px;
+    }
+
+    @media screen and (max-width: 480px) {
+        width: 160px;
+    }
 }
 
 .name {
     font-size: 24px;
+
+    @media screen and (max-width: 768px) {
+        font-size: 20px;
+    }
 }
 
 .email {
-    font-size: 14px;
+    font-size: 18px;
+    @media screen and (max-width: 768px) {
+        font-size: 14px;
+    }
 }
 
 .button {
